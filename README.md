@@ -47,7 +47,7 @@ Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
 <div align="center">
 
-[![GenoBridge](https://img.shields.io/badge/GenoBridge-VCF%20%E2%86%92%20Prediction-3fb950?style=for-the-badge&logoColor=white)](https://github.com/nps-genomics/GenoBridge)
+[![GenoBridge](https://img.shields.io/badge/GenoBridge-SNP%20to%20Phenotype%20ML-0f172a?style=for-the-badge&labelColor=3fb950&color=111827)](https://github.com/nps-genomics/GenoBridge)
 
 </div>
 
