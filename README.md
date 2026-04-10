@@ -70,7 +70,7 @@ researcher = {
 <tr>
 <td width="50%">
 
-### 🍊 Citrus Organellar Genomics
+### 🍊 Citrus Genomics
 Complete chloroplast genome characterization of three red-fleshed grapefruit cultivars (*Rio Red, Ruby Red, Texas Red TR-1*) via **PacBio HiFi WGS**. Resolving IR boundary polymorphisms and investigating plastid-to-mitochondria gene transfer relevant to **HLB disease** research.
 
 </td>
@@ -97,6 +97,12 @@ Contributed to genome sequencing, DNA methylation landscape analysis, and **tran
 </tr>
 </table>
 
+### 🫘 Fungus
+Evolution of pathogenicity-associated genes in **Rhizoctonia solani AG1-IA** by genome duplication and transposon-mediated gene function alterations (*Rice*)  — 1 publication, 22+ citations.
+
+</td>
+</tr>
+</table>
 ---
 
 ## 🛠️ Tech Stack
