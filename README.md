@@ -46,9 +46,11 @@ Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 ## 🚀 Featured Project
 
 <div align="center">
-  <a href="https://github.com/nps-genomics/GenoBridge">
-    <img src="./assets/genobridge-logo.png" alt="GenoBridge logo" width="220" />
-  </a>
+
+<a href="https://github.com/nps-genomics/GenoBridge">
+  <img src="https://img.shields.io/static/v1?label=Featured%20Project&message=GenoBridge&color=0f172a&labelColor=3fb950&style=for-the-badge" alt="GenoBridge badge" />
+</a>
+
 </div>
 
 **GenoBridge** is a sample-size-adaptive ensemble ML pipeline for genotype-to-phenotype prediction using SNP data from VCF files. It addresses three core limitations in current genomic prediction workflows:
