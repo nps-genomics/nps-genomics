@@ -97,12 +97,13 @@ Contributed to genome sequencing, DNA methylation landscape analysis, and **tran
 </tr>
 </table>
 
-### 🫘 Fungus
+###  🍄 Fungal Genomics & Pathogenicity
 Evolution of pathogenicity-associated genes in **Rhizoctonia solani AG1-IA** by genome duplication and transposon-mediated gene function alterations (*Rice*)  — 1 publication, 22+ citations.
 
 </td>
 </tr>
 </table>
+
 ---
 
 ## 🛠️ Tech Stack
