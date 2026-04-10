@@ -47,7 +47,7 @@ Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
 <div align="center">
   <a href="https://github.com/nps-genomics/GenoBridge">
-    <img src="https://raw.githubusercontent.com/nps-genomics/GenoBridge/main/assets/genobridge-logo.png" alt="GenoBridge logo" width="220" />
+    <img src="./assets/genobridge-logo.png" alt="GenoBridge logo" width="220" />
   </a>
 </div>
 
