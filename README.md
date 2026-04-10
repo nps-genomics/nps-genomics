@@ -9,28 +9,22 @@
 </div>
 
 ---
+🧬 About Me  
 
-🧬 About Me
+**Nagendra Pratap Singh**  
+Ph.D. Student — Plant Genetics & Bioinformatics  
+Texas A&M University, College Station, TX  
+Advisor: **Dr. Amit Dhingra**
 
-```python
-researcher = {
-    "name"       : "Nagendra Pratap Singh",
-    "position"   : "Ph.D. Student — Plant Genetics & Bioinformatics",
-    "institution": "Texas A&M University, College Station, TX",
-    "advisor"    : "Dr. Amit Dhingra",
-    "affiliations": ["TAMU", "TAMU-Kingsville", "USDA-ARS", "CIMMYT Academy"],
-    "focus"      : [
-        "Citrus organellar genomics (chloroplast & mitochondria)",
-        "Adaptive ML for genomic prediction (GenoBridge)",
-        "Wheat pangenomics & structural variation",
-        "Cross-kingdom sRNA regulation",
-    ],
-    "awards"     : ["CSIR-NET All-India Rank 62 (2018)", "Steidinger Citrus Scholarship"],
-    "email"      : "nagendra.singh@agnet.tamu.edu",
-}
-```
+- **Affiliations:** TAMU, TAMU–Kingsville, USDA-ARS, CIMMYT Academy  
+- **Research focus:**  
+  - Citrus organellar genomics (chloroplast & mitochondria)  
+  - Adaptive ML for genomic prediction (GenoBridge)  
+  - Wheat pangenomics & structural variation  
+  - Cross-kingdom sRNA regulation  
+- **Awards:** CSIR-NET All-India Rank 62 (2018); Steidinger Citrus Scholarship  
+- **Email:** nagendra.singh@agnet.tamu.edu
 
-[https://github.com/nps-genomics/nps-genomics.github.io/blob/main/README.md](https://github.com/nps-genomics/nps-genomics.github.io/blob/main/README.md)
 
 ---
 
