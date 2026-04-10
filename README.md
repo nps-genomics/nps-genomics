@@ -14,14 +14,15 @@
 **Nagendra Pratap Singh**  
 Ph.D. Student — Plant Genetics & Bioinformatics  
 Texas A&M University, College Station, TX  
-Advisor: **Dr. Amit Dhingra**
+Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
 - **Affiliations:** TAMU, TAMU–Kingsville, USDA-ARS, CIMMYT Academy  
 - **Research focus:**  
-  - Citrus organellar genomics (chloroplast & mitochondria)  
+  - Citrus genomics (chloroplast & mitochondria)  
   - Adaptive ML for genomic prediction (GenoBridge)  
   - Wheat pangenomics & structural variation  
-  - Cross-kingdom sRNA regulation  
+  - Cross-kingdom sRNA regulation
+  - Fungal Genomics & Pathogenicity
 - **Awards:** CSIR-NET All-India Rank 62 (2018); Steidinger Citrus Scholarship  
 - **Email:** nagendra.singh@agnet.tamu.edu
 
