@@ -102,7 +102,7 @@ Evolution of pathogenicity-associated genes in **Rhizoctonia solani AG1-IA** by 
 
 </td>
 </tr>
-</table> width="50%">
+</table>
 
 ---
 
