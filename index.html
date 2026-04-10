@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nagendra Pratap Singh | Plant Genomics & Bioinformatics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:       #0d1117;
+  --bg2:      #161b22;
+  --bg3:      #1c2330;
+  --border:   #2a3445;
+  --green:    #3fb950;
+  --green2:   #238636;
+  --gold:     #d4a843;
+  --gold2:    #f0c060;
+  --text:     #e6edf3;
+  --muted:    #8b949e;
+  --accent:   #58a6ff;
+  --red:      #f85149;
+  --serif:    'DM Serif Display', Georgia, serif;
+  --sans:     'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── NAV ───────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  height: 58px;
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--green);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px clamp(2rem, 8vw, 7rem) 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 40%, rgba(63,185,80,0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(88,166,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* DNA canvas */
+#dna-canvas {
+  position: absolute; inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.hero-text { position: relative; z-index: 2; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(63,185,80,0.1);
+  border: 1px solid rgba(63,185,80,0.3);
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+h1.name {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1.08;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.9rem;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+
+h1.name em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+  line-height: 1.6;
+}
+
+.hero-stats {
+  display: flex; gap: 2rem; margin-bottom: 2.5rem;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.stat {
+  display: flex; flex-direction: column;
+}
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  color: var(--gold2);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--green2);
+  color: #fff;
+  border: 1px solid var(--green);
+}
+.btn-primary:hover { background: var(--green); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--muted); background: var(--bg2); transform: translateY(-1px); }
+
+/* Hero right — floating cards */
+.hero-right {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: 1rem;
+  padding-left: 3rem;
+  animation: fadeIn 1s 0.5s ease both;
+}
+
+.float-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.float-card:hover { transform: translateX(4px); border-color: var(--green); }
+
+.float-card-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.float-card-val {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.float-card-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* ── SECTION BASE ───────────────────────────────────────────── */
+section {
+  padding: 80px clamp(2rem, 8vw, 7rem);
+}
+
+section:nth-child(even) { background: var(--bg2); }
+
+.section-header {
+  display: flex; align-items: baseline; gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.section-num {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--green);
+  opacity: 0.7;
+}
+
+h2.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  color: var(--text);
+  font-weight: 400;
+}
+
+h2.section-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+/* ── ABOUT ──────────────────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.about-text p strong { color: var(--text); font-weight: 500; }
+
+.about-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+
+.info-row {
+  display: flex; align-items: flex-start; gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-icon {
+  width: 32px; height: 32px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.info-content { flex: 1; }
+.info-content strong { display: block; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.info-content span { font-size: 0.88rem; color: var(--text); }
+
+/* ── RESEARCH ───────────────────────────────────────────────── */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.research-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.6rem;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.research-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.research-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(63,185,80,0.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.research-card:hover::before { transform: scaleX(1); }
+
+.card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+
+.card-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card-tags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.tag-green  { background: rgba(63,185,80,0.12);  color: var(--green); }
+.tag-blue   { background: rgba(88,166,255,0.12); color: var(--accent); }
+.tag-gold   { background: rgba(212,168,67,0.12); color: var(--gold2); }
+.tag-red    { background: rgba(248,81,73,0.12);  color: var(--red); }
+
+/* ── PUBLICATIONS ───────────────────────────────────────────── */
+.pub-filter {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--green2);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.pub-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.pub-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.3rem 1.5rem;
+  transition: border-color 0.2s;
+  display: none;
+}
+
+.pub-item.show { display: block; }
+.pub-item:hover { border-color: rgba(63,185,80,0.3); }
+
+.pub-meta {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pub-year {
+  font-size: 0.72rem;
+  color: var(--gold2);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.pub-journal {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.pub-badge {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.badge-published { background: rgba(63,185,80,0.15); color: var(--green); }
+.badge-review    { background: rgba(212,168,67,0.15); color: var(--gold2); }
+.badge-prep      { background: rgba(139,148,158,0.15); color: var(--muted); }
+.badge-preprint  { background: rgba(88,166,255,0.15); color: var(--accent); }
+
+.pub-title {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.pub-authors {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.pub-authors strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pub-cite {
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  color: var(--green);
+  font-weight: 500;
+}
+
+/* ── SOFTWARE ───────────────────────────────────────────────── */
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.software-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.6rem;
+  transition: all 0.25s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.software-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+.sw-header {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.sw-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--green2), var(--accent));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+
+.sw-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.sw-version {
+  margin-left: auto;
+  font-size: 0.7rem;
+  background: rgba(63,185,80,0.12);
+  color: var(--green);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.sw-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.sw-stats {
+  display: flex; gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.sw-stat { font-size: 0.75rem; color: var(--muted); }
+.sw-stat span { color: var(--text); font-weight: 500; }
+
+/* ── EXPERIENCE TIMELINE ────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--green), transparent);
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 2.5rem 2rem;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -5px; top: 8px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--green);
+  transition: background 0.2s;
+}
+
+.tl-item:hover::before { background: var(--green); }
+
+.tl-date {
+  font-size: 0.72rem;
+  color: var(--green);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.tl-role {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.tl-inst {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0.7rem;
+}
+
+.tl-bullets {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+
+.tl-bullets li {
+  font-size: 0.83rem;
+  color: var(--muted);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.tl-bullets li::before {
+  content: '›';
+  position: absolute; left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ── SKILLS ─────────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-group {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem;
+}
+
+.skill-group-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-chips {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+
+.chip {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* ── CONTACT ─────────────────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-intro {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.contact-intro em { color: var(--gold2); font-style: italic; }
+
+.contact-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.contact-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.contact-link:hover {
+  border-color: var(--green);
+  background: rgba(63,185,80,0.06);
+  transform: translateX(4px);
+}
+
+.contact-link-icon {
+  font-size: 1rem;
+  width: 32px;
+  text-align: center;
+}
+
+.contact-link-label { color: var(--muted); font-size: 0.72rem; display: block; margin-bottom: 0.1rem; }
+.contact-link-val   { font-size: 0.85rem; color: var(--text); }
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  padding: 2rem clamp(2rem, 8vw, 7rem);
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+
+.footer-copy { font-size: 0.78rem; color: var(--muted); }
+.footer-copy span { color: var(--green); }
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .nav-links { gap: 1.2rem; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero-stats { gap: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#top">NPS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#software">Software</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────── -->
+<div class="hero" id="top">
+  <canvas id="dna-canvas"></canvas>
+
+  <div class="hero-text">
+    <div class="hero-badge">Texas A&amp;M University · College Station</div>
+
+    <h1 class="name">Nagendra<br/><em>Pratap Singh</em></h1>
+
+    <p class="hero-tagline">
+      Ph.D. Student in Plant Genetics &amp; Bioinformatics — developing adaptive ML pipelines for genomic prediction, constructing pangenomes, and characterizing organellar genomes in crop species.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">176</span>
+        <span class="stat-label">Citations</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">6</span>
+        <span class="stat-label">h-index</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">8+</span>
+        <span class="stat-label">In Review / Prep</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="https://scholar.google.com/citations?user=anLGTFwAAAAJ" target="_blank" class="btn btn-primary">
+        📊 Google Scholar
+      </a>
+      <a href="https://github.com/nps-genomics" target="_blank" class="btn btn-outline">
+        🐙 GitHub
+      </a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="float-card">
+      <div class="float-card-label">📍 Current Position</div>
+      <div class="float-card-val">Graduate Research Assistant</div>
+      <div class="float-card-sub">Dept. of Horticultural Sciences, TAMU</div>
+    </div>
+    <div class="float-card">
+      <div class="float-card-label">🧬 Active Project</div>
+      <div class="float-card-val">GenoBridge v1.0</div>
+      <div class="float-card-sub">Adaptive ML pipeline for genomic prediction</div>
+    </div>
+    <div class="float-card">
+      <div class="float-card-label">🌿 Organism Focus</div>
+      <div class="float-card-val">Grapefruit · Wheat · Chickpea</div>
+      <div class="float-card-sub">Citrus × paradisi · Triticum · Cicer arietinum</div>
+    </div>
+    <div class="float-card">
+      <div class="float-card-label">🏛️ Affiliations</div>
+      <div class="float-card-val">TAMU · TAMU-K · USDA-ARS · CIMMYT</div>
+      <div class="float-card-sub">College Station, Kingsville, International</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ──────────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About <em>Me</em></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I am a <strong>Ph.D. student in Plant Genetics &amp; Bioinformatics</strong> at Texas A&amp;M University, College Station, working at the intersection of computational genomics, machine learning, and plant biology. My research spans chloroplast and mitochondrial genomics, transcriptomics, pangenomics, and the development of scalable ML pipelines for crop improvement.
+      </p>
+      <p>
+        My doctoral work centers on two parallel tracks: <strong>citrus organellar genomics</strong> — characterizing complete chloroplast genomes of three red-fleshed grapefruit cultivars and building a haplotype-resolved 'Rio Red' grapefruit assembly — and <strong>GenoBridge</strong>, an ensemble ML framework for sample-size-adaptive genomic prediction integrated with GWAS-guided candidate gene discovery.
+      </p>
+      <p>
+        Before joining TAMU, I spent four years as a <strong>CSIR-NET Research Fellow at NIPGR, New Delhi</strong>, where I contributed to genomic and epigenomic studies in chickpea, ricebean, and rice, and administered the institute's HPC infrastructure. I also held a Research Assistant position at <strong>Montana State University</strong>, where I assembled wheat pangenomes and investigated cross-kingdom sRNA regulation.
+      </p>
+      <p>
+        I am a <strong>CIMMYT Academy affiliate</strong> (2024–2026) and hold competitive scholarships from TAMU including the Horticultural Sciences Graduate Scholarship and the Steidinger Citrus Scholarship.
+      </p>
+    </div>
+    <div class="about-sidebar reveal">
+      <div class="info-row">
+        <div class="info-icon">🎓</div>
+        <div class="info-content">
+          <strong>Education</strong>
+          <span>Ph.D. Plant Genetics, TAMU (2025–Present)<br/>M.S. Plant &amp; Soil Sci., TAMU-K (2024–2025)</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div class="info-content">
+          <strong>Location</strong>
+          <span>College Station, TX, USA</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div class="info-content">
+          <strong>Email</strong>
+          <span>nagendra.singh@agnet.tamu.edu</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏆</div>
+        <div class="info-content">
+          <strong>CSIR-NET</strong>
+          <span>All-India Rank 62 (June 2018)</span>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🌐</div>
+        <div class="info-content">
+          <strong>Languages</strong>
+          <span>English · Hindi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESEARCH ───────────────────────────────────────────────────────── -->
+<section id="research">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Research <em>Areas</em></h2>
+  </div>
+  <div class="research-grid">
+
+    <div class="research-card reveal">
+      <div class="card-icon">🍊</div>
+      <div class="card-title">Citrus Organellar Genomics</div>
+      <p class="card-desc">Characterizing complete chloroplast and mitochondrial genomes of red-fleshed grapefruit cultivars (Rio Red, Ruby Red, Texas Red TR-1) via PacBio HiFi WGS. Investigating IR boundary polymorphisms and plastid-to-mitochondria gene transfer relevant to HLB disease.</p>
+      <div class="card-tags">
+        <span class="tag tag-green">Chloroplast Genomics</span>
+        <span class="tag tag-blue">PacBio HiFi</span>
+        <span class="tag tag-gold">Citrus × paradisi</span>
+      </div>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">ML-Based Genomic Prediction</div>
+      <p class="card-desc">Developing GenoBridge — a sample-size-adaptive ensemble ML framework integrating Ridge regression, Random Forest, XGBoost, MLP, and stacking ensembles for genotype-to-phenotype prediction. Introduces CV-R² diagnostics and ML-gated GWAS for improved statistical power allocation.</p>
+      <div class="card-tags">
+        <span class="tag tag-green">GenoBridge</span>
+        <span class="tag tag-blue">Ensemble ML</span>
+        <span class="tag tag-gold">GWAS</span>
+        <span class="tag tag-red">XGBoost</span>
+      </div>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="card-icon">🌾</div>
+      <div class="card-title">Wheat Pangenomics</div>
+      <p class="card-desc">Assembling and analyzing pangenomes of Montana winter, spring, and durum wheat varieties using whole-genome resequencing. Uncovering selective sweeps, genomic diversity, and functional gene expansion across North American elite wheat germplasm.</p>
+      <div class="card-tags">
+        <span class="tag tag-green">Pangenomics</span>
+        <span class="tag tag-blue">WGS</span>
+        <span class="tag tag-gold">Triticum</span>
+      </div>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="card-icon">🔗</div>
+      <div class="card-title">Cross-Kingdom sRNA Regulation</div>
+      <p class="card-desc">Investigating microRNA-mediated cross-kingdom gene regulation between wheat and wheat stem sawfly (Cephus cinctus). Identifying host-derived sRNAs that may silence insect target genes as a novel mechanism of crop resistance.</p>
+      <div class="card-tags">
+        <span class="tag tag-blue">miRNA</span>
+        <span class="tag tag-green">RNA-seq</span>
+        <span class="tag tag-gold">Insect Resistance</span>
+      </div>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="card-icon">🫘</div>
+      <div class="card-title">Legume Transcriptomics &amp; Epigenomics</div>
+      <p class="card-desc">Contributing to genome sequencing, DNA methylation landscape characterization, and transcriptome-wide association mapping in chickpea (Cicer arietinum) and ricebean (Vigna umbellata) at NIPGR, New Delhi.</p>
+      <div class="card-tags">
+        <span class="tag tag-green">Epigenomics</span>
+        <span class="tag tag-blue">TWAS</span>
+        <span class="tag tag-gold">Chickpea</span>
+      </div>
+    </div>
+
+    <div class="research-card reveal">
+      <div class="card-icon">🥜</div>
+      <div class="card-title">Peanut Disease Resistance</div>
+      <p class="card-desc">RNA-seq transcriptomics of peanut seed-coat resistance to Aspergillus flavus. Identified 76 significant phenylpropanoid DEGs; highlighted UGT73C6 (+11.7 log₂FC) and a lignin-building cluster (BBE-like 13, Laccase-15, Dirigent-22) as primary resistance determinants.</p>
+      <div class="card-tags">
+        <span class="tag tag-green">RNA-seq</span>
+        <span class="tag tag-red">Aspergillus</span>
+        <span class="tag tag-gold">Phenylpropanoid</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ──────────────────────────────────────────────────── -->
+<section id="publications">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title"><em>Publications</em></h2>
+  </div>
+
+  <div class="pub-filter reveal">
+    <button class="filter-btn active" onclick="filterPubs('all',this)">All</button>
+    <button class="filter-btn" onclick="filterPubs('published',this)">Published</button>
+    <button class="filter-btn" onclick="filterPubs('review',this)">Under Review</button>
+    <button class="filter-btn" onclick="filterPubs('prep',this)">In Preparation</button>
+    <button class="filter-btn" onclick="filterPubs('preprint',this)">Preprint</button>
+  </div>
+
+  <div class="pub-list">
+
+    <!-- Published -->
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2020</span>
+        <span class="pub-journal">Plant Biotechnology Journal</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">Root-specific expression of chickpea cytokinin oxidase/dehydrogenase 6 leads to enhanced root growth, drought tolerance, and yield without compromising nodulation</div>
+      <div class="pub-authors">Khandal H, Gupta SK, Dwivedi V, …, <strong>Singh NP</strong>, …, Chattopadhyay D.</div>
+      <div class="pub-cite">🔢 90 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2022</span>
+        <span class="pub-journal">Plants</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">Mutation in the endo-β-1,4-glucanase (KORRIGAN) is responsible for the thick leaf phenotype in sorghum</div>
+      <div class="pub-authors">Mendu L, Jalathge G, Dhillon KK, <strong>Singh NP</strong>, …, Mendu V.</div>
+      <div class="pub-cite">🔢 5 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-journal">Crop Science</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">A 'solid' solution for wheat stem sawfly (Hymenoptera: Cephidae) resistance: Genetics, breeding, and development of solid stem wheat</div>
+      <div class="pub-authors">Bathini A, Mendu L, <strong>Singh NP</strong>, Cook J, Weaver D, Sherman J, Hager M, Mondal S, Mendu V.</div>
+      <div class="pub-cite">🔢 8 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-journal">BMC Biology</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">Evolution of pathogenicity-associated genes in Rhizoctonia solani AG1-IA by genome duplication and transposon-mediated gene function alterations</div>
+      <div class="pub-authors">Francis A, Ghosh S, Tyagi K, Prakasam V, Rani M, <strong>Singh NP</strong>, …, Jha G.</div>
+      <div class="pub-cite">🔢 22 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-journal">Plant Biotechnology Journal</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">The ricebean genome provides insight into Vigna genome evolution and facilitates genetic enhancement</div>
+      <div class="pub-authors">Francis A, <strong>Singh NP</strong>, Singh M, Sharma P, …, Chattopadhyay D.</div>
+      <div class="pub-cite">🔢 12 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-journal">Planta</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">Differential expression of genes during recovery of Nicotiana tabacum from tomato leaf curl Gujarat virus infection</div>
+      <div class="pub-authors">Namgial T, Singh AK, <strong>Singh NP</strong>, Francis A, Chattopadhyay D, Voloudakis A, Chakraborty S.</div>
+      <div class="pub-cite">🔢 6 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-journal">DNA Research</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">Uncovering DNA methylation landscapes to decipher evolutionary footprints of phenotypic diversity in chickpea</div>
+      <div class="pub-authors">Daware A, Mohanty JK, Narnoliya L, …, <strong>Singh NP</strong>, …, Parida SK.</div>
+      <div class="pub-cite">🔢 4 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-journal">Journal of Experimental Botany</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">The chickpea WIP2 gene underlying a major QTL contributes to lateral root development</div>
+      <div class="pub-authors">Dwivedi V, Pal L, Singh S, <strong>Singh NP</strong>, Parida SK, Chattopadhyay D.</div>
+      <div class="pub-cite">🔢 9 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-journal">BMC Plant Biology</span>
+        <span class="pub-badge badge-published">Published</span>
+      </div>
+      <div class="pub-title">Transcriptome-wide association mapping provides insights into the genetic basis and candidate genes governing flowering, maturity, and seed weight in rice bean (Vigna umbellata)</div>
+      <div class="pub-authors">Sahu TK, Verma SK, Gayacharan, <strong>Singh NP</strong>, …, Singh AK.</div>
+      <div class="pub-cite">🔢 5 citations</div>
+    </div>
+
+    <div class="pub-item show" data-type="published">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-journal">Plant Pangenomes and Pangenomics, Elsevier</span>
+        <span class="pub-badge badge-published">Book Chapter</span>
+      </div>
+      <div class="pub-title">Technological development for analyzing and constructing plant pangenomes</div>
+      <div class="pub-authors"><strong>Singh NP</strong>, Mendu L, Thudi M, Mendu V.</div>
+    </div>
+
+    <!-- Preprint -->
+    <div class="pub-item show" data-type="preprint">
+      <div class="pub-meta">
+        <span class="pub-year">2022</span>
+        <span class="pub-journal">bioRxiv</span>
+        <span class="pub-badge badge-preprint">Preprint</span>
+      </div>
+      <div class="pub-title">The extracellular RNA pool within Zea mays apoplast: composition and differential expression during Ustilago maydis infection</div>
+      <div class="pub-authors">Mukherjee D<sup>#</sup>, <strong>Singh NP</strong><sup>#</sup>, Roy A, Mondal R, Acharya U, Chattopadhyay D, Ghosh A. (<sup>#</sup>co-first authors)</div>
+    </div>
+
+    <!-- Under Review -->
+    <div class="pub-item show" data-type="review">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-journal">BMC Plant Biology</span>
+        <span class="pub-badge badge-review">Under Review</span>
+      </div>
+      <div class="pub-title">Characterization of complete chloroplast genomes of three red-fleshed grapefruit (Citrus × paradisi Macfad.) cultivars</div>
+      <div class="pub-authors"><strong>Singh NP</strong>, Mendu V, Setamou M, Kunta MB.</div>
+    </div>
+
+    <div class="pub-item show" data-type="review">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-journal">Plant Methods</span>
+        <span class="pub-badge badge-review">Under Review</span>
+      </div>
+      <div class="pub-title">GenoBridge: A sample-size-adaptive ensemble machine learning pipeline for genotype-to-phenotype prediction using integrated GWAS-ML hybrid validation</div>
+      <div class="pub-authors"><strong>Singh NP</strong>, Mendu L, Mendu V.</div>
+    </div>
+
+    <div class="pub-item show" data-type="review">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-journal">In Review</span>
+        <span class="pub-badge badge-review">Under Review</span>
+      </div>
+      <div class="pub-title">Pangenome and resequencing analysis of elite North American durum wheat uncovers genomic diversity, selective sweeps, and functional gene expansion</div>
+      <div class="pub-authors"><strong>Singh NP</strong>, Mendu L, Thudi M, Mendu V.</div>
+    </div>
+
+    <!-- In Prep -->
+    <div class="pub-item show" data-type="prep">
+      <div class="pub-meta">
+        <span class="pub-year">In Prep</span>
+        <span class="pub-journal"></span>
+        <span class="pub-badge badge-prep">In Preparation</span>
+      </div>
+      <div class="pub-title">Haplotype-resolved chromosome-level assembly of 'Rio Red' grapefruit reveals candidate loci for lycopene accumulation and key citrus gene families</div>
+      <div class="pub-authors"><strong>Singh NP</strong>.</div>
+    </div>
+
+    <div class="pub-item show" data-type="prep">
+      <div class="pub-meta">
+        <span class="pub-year">In Prep</span>
+        <span class="pub-journal"></span>
+        <span class="pub-badge badge-prep">In Preparation</span>
+      </div>
+      <div class="pub-title">Plastid-to-mitochondria gene transfer and repeat-mediated mitochondrial genome reconfiguration in grapefruit: Organellar genomic resources for HLB disease research</div>
+      <div class="pub-authors"><strong>Singh NP</strong>, Mendu V, Setamou M, Kunta MB.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SOFTWARE ──────────────────────────────────────────────────────── -->
+<section id="software">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Software &amp; <em>Tools</em></h2>
+  </div>
+  <div class="software-grid">
+
+    <a href="https://github.com/nps-genomics/GenoBridge" target="_blank" class="software-card reveal">
+      <div class="sw-header">
+        <div class="sw-icon">🧬</div>
+        <div>
+          <div class="sw-name">GenoBridge</div>
+        </div>
+        <div class="sw-version">v1.0</div>
+      </div>
+      <p class="sw-desc">
+        Sample-size-adaptive ensemble ML pipeline for genotype-to-phenotype prediction using SNP data from VCF files. Integrates Ridge regression, Random Forest, XGBoost, MLP, and stacking. Supports 30–100,000+ samples across any plant species. Distributed as standalone binaries — no Python required.
+      </p>
+      <div class="sw-stats">
+        <div class="sw-stat">Platform <span>Linux · macOS · CentOS</span></div>
+        <div class="sw-stat">Input <span>VCF + CSV</span></div>
+        <div class="sw-stat">License <span>MIT</span></div>
+      </div>
+    </a>
+
+    <a href="https://github.com/nps-genomics/GenoBridge" target="_blank" class="software-card reveal">
+      <div class="sw-header">
+        <div class="sw-icon">🔍</div>
+        <div>
+          <div class="sw-name">GenoBridge_GWAS_ML</div>
+        </div>
+        <div class="sw-version">v1.0</div>
+      </div>
+      <p class="sw-desc">
+        Hybrid GWAS + ML pipeline for candidate gene discovery with population structure correction. Takes ML prediction results from GenoBridge as input, applies ML-gated GWAS to focus statistical power on genomically predictable traits, and annotates candidate genes from GFF3.
+      </p>
+      <div class="sw-stats">
+        <div class="sw-stat">Input <span>VCF + GFF3</span></div>
+        <div class="sw-stat">Correction <span>PC-based</span></div>
+        <div class="sw-stat">License <span>MIT</span></div>
+      </div>
+    </a>
+
+    <div class="software-card reveal" style="cursor:default;">
+      <div class="sw-header">
+        <div class="sw-icon">🌐</div>
+        <div>
+          <div class="sw-name">NIPGR Web Portals</div>
+        </div>
+      </div>
+      <p class="sw-desc">
+        Developed and deployed three institutional bioinformatics portals during tenure at NIPGR: RiceBean Portal (ricebeanportal.com), Chickpea Genome Browser (nipgr.ac.in/chickpea), and Cicer Genome Resource (nipgr.ac.in/cicer). Built with PHP, HTML/CSS, JavaScript, and MySQL.
+      </p>
+      <div class="sw-stats">
+        <div class="sw-stat">Stack <span>PHP · MySQL · JS</span></div>
+        <div class="sw-stat">Org <span>NIPGR, India</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ────────────────────────────────────────────────────── -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Research <em>Experience</em></h2>
+  </div>
+  <div class="timeline reveal">
+
+    <div class="tl-item">
+      <div class="tl-date">Aug 2025 – Present</div>
+      <div class="tl-role">Graduate Research Assistant</div>
+      <div class="tl-inst">Dept. of Horticultural Sciences, Texas A&amp;M University, College Station · Advisor: Dr. Amit Dhingra</div>
+      <ul class="tl-bullets">
+        <li>Developing GenoBridge ensemble ML pipeline for sample-size-adaptive genomic prediction with GWAS integration.</li>
+        <li>Characterizing complete chloroplast genomes of three grapefruit cultivars via PacBio HiFi WGS.</li>
+        <li>Constructing haplotype-resolved 'Rio Red' grapefruit assembly for lycopene locus discovery.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">Aug 2024 – Aug 2025</div>
+      <div class="tl-role">Graduate Research Assistant</div>
+      <div class="tl-inst">Texas A&amp;M University–Kingsville · Advisor: Dr. Venugopal Mendu</div>
+      <ul class="tl-bullets">
+        <li>Identified 76 phenylpropanoid DEGs in peanut–Aspergillus flavus resistance; UGT73C6 as top hit (+11.7 log₂FC).</li>
+        <li>Drafted NSF PGRP GenoBridge-2 proposal with four specific aims and multi-institutional collaboration.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">Aug 2022 – Aug 2024</div>
+      <div class="tl-role">Research Assistant</div>
+      <div class="tl-inst">Dept. of Plant Sciences &amp; Plant Pathology, Montana State University, Bozeman</div>
+      <ul class="tl-bullets">
+        <li>Assembled pangenomes of Montana winter, spring, and durum wheat; characterized selective sweeps and gene expansion.</li>
+        <li>Presented cross-kingdom miRNA regulation research at PAG XXIX San Diego (2024) and Montana Wheat &amp; Barley Committee (2024).</li>
+        <li>Co-authored <em>Crop Science</em> paper on solid-stem wheat resistance (Bathini et al., 2023).</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2018 – 2022</div>
+      <div class="tl-role">Junior / Senior Research Fellow (CSIR-NET)</div>
+      <div class="tl-inst">National Institute of Plant Genome Research (NIPGR), New Delhi, India</div>
+      <ul class="tl-bullets">
+        <li>Contributed to 6 peer-reviewed publications (130+ combined citations) across chickpea, ricebean, rice, and maize genomics.</li>
+        <li>Administered 7-node HPC cluster (~6.5 TB RAM) and ~397 TB NAS/SAN storage for institute-wide sequencing.</li>
+        <li>Developed and deployed three public bioinformatics web portals.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2024 – 2026</div>
+      <div class="tl-role">Visiting Graduate Student / Research Affiliate</div>
+      <div class="tl-inst">CIMMYT Academy, Texcoco, Mexico</div>
+      <ul class="tl-bullets">
+        <li>Independent training and collaborative research in international plant sciences and genomics.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SKILLS ────────────────────────────────────────────────────────── -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Technical <em>Skills</em></h2>
+  </div>
+  <div class="skills-grid">
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">🧬 Genome Assembly</div>
+      <div class="skill-chips">
+        <span class="chip">Flye</span><span class="chip">CANU</span><span class="chip">Falcon</span>
+        <span class="chip">Verkko</span><span class="chip">MaSuRCA</span><span class="chip">MEGAHIT</span>
+        <span class="chip">metaSPAdes</span><span class="chip">Raven</span><span class="chip">Shasta</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">📝 Annotation</div>
+      <div class="skill-chips">
+        <span class="chip">AUGUSTUS</span><span class="chip">BRAKER2</span><span class="chip">MAKER-P</span>
+        <span class="chip">PASA</span><span class="chip">EvidenceModeler</span><span class="chip">RepeatMasker</span>
+        <span class="chip">InterProScan</span><span class="chip">eggNOG-mapper</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">📊 Transcriptomics</div>
+      <div class="skill-chips">
+        <span class="chip">STAR</span><span class="chip">HISAT2</span><span class="chip">DESeq2</span>
+        <span class="chip">edgeR</span><span class="chip">Salmon</span><span class="chip">Kallisto</span>
+        <span class="chip">Seurat</span><span class="chip">Scanpy</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">🔬 Variant Calling</div>
+      <div class="skill-chips">
+        <span class="chip">GATK</span><span class="chip">DeepVariant</span><span class="chip">FreeBayes</span>
+        <span class="chip">Manta</span><span class="chip">Sniffles</span><span class="chip">SnpEff</span>
+        <span class="chip">VEP</span><span class="chip">ANNOVAR</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">🤖 ML / GWAS</div>
+      <div class="skill-chips">
+        <span class="chip">XGBoost</span><span class="chip">Random Forest</span><span class="chip">Ridge</span>
+        <span class="chip">MLP</span><span class="chip">PLINK</span><span class="chip">TASSEL</span>
+        <span class="chip">GAPIT</span><span class="chip">scikit-learn</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">🌲 Phylogenetics</div>
+      <div class="skill-chips">
+        <span class="chip">IQ-TREE</span><span class="chip">RAxML</span><span class="chip">MrBayes</span>
+        <span class="chip">MEGA</span><span class="chip">MAFFT</span><span class="chip">MUSCLE</span>
+        <span class="chip">OrthoFinder</span><span class="chip">MCScanX</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">💻 Languages</div>
+      <div class="skill-chips">
+        <span class="chip">Python</span><span class="chip">R</span><span class="chip">Bash</span>
+        <span class="chip">Perl</span><span class="chip">Rust</span><span class="chip">PHP</span>
+        <span class="chip">JavaScript</span><span class="chip">MySQL</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">⚙️ Workflows &amp; Cloud</div>
+      <div class="skill-chips">
+        <span class="chip">Nextflow</span><span class="chip">Snakemake</span><span class="chip">AWS Batch</span>
+        <span class="chip">DNAnexus</span><span class="chip">Galaxy</span><span class="chip">HPC/SLURM</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-num">07</span>
+    <h2 class="section-title">Get in <em>Touch</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-intro">Open to collaborations in <em>plant genomics,</em> ML pipelines &amp; crop improvement.</p>
+      <p class="contact-text">
+        I am always interested in discussing research collaborations, especially around genomic prediction frameworks, organellar genomics, pangenomics, and ML applications in plant breeding. Feel free to reach out via email or connect on GitHub and Google Scholar.
+      </p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:nagendra.singh@agnet.tamu.edu" class="contact-link">
+        <span class="contact-link-icon">📧</span>
+        <div>
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-val">nagendra.singh@agnet.tamu.edu</span>
+        </div>
+      </a>
+      <a href="https://github.com/nps-genomics" target="_blank" class="contact-link">
+        <span class="contact-link-icon">🐙</span>
+        <div>
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-val">github.com/nps-genomics</span>
+        </div>
+      </a>
+      <a href="https://scholar.google.com/citations?user=anLGTFwAAAAJ" target="_blank" class="contact-link">
+        <span class="contact-link-icon">📊</span>
+        <div>
+          <span class="contact-link-label">Google Scholar</span>
+          <span class="contact-link-val">176 citations · h-index 6</span>
+        </div>
+      </a>
+      <a href="mailto:22singhnagendra@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉️</span>
+        <div>
+          <span class="contact-link-label">Personal Email</span>
+          <span class="contact-link-val">22singhnagendra@gmail.com</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-copy">
+    © 2026 <span>Nagendra Pratap Singh</span> · Texas A&amp;M University
+  </div>
+  <div class="footer-copy">
+    Built with GitHub Pages · <span>nps-genomics.github.io</span>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ───────────────────────────────────────────────────────── -->
+<script>
+// ── DNA Canvas animation ────────────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('dna-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, raf;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  const STRANDS = 3;
+  const pts = 60;
+  const speed = 0.004;
+  let t = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (let s = 0; s < STRANDS; s++) {
+      const offsetX = (W / (STRANDS + 1)) * (s + 1);
+      const amp = 55 + s * 10;
+      const freq = 0.055 + s * 0.01;
+      const phase = (s * Math.PI * 2) / STRANDS;
+
+      // backbone strands
+      for (let strand = 0; strand < 2; strand++) {
+        ctx.beginPath();
+        for (let i = 0; i <= pts; i++) {
+          const y = (H / pts) * i;
+          const waveX = Math.sin(i * freq + t + phase + strand * Math.PI) * amp;
+          const x = offsetX + waveX;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = strand === 0 ? 'rgba(63,185,80,0.6)' : 'rgba(88,166,255,0.5)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      // rungs
+      for (let i = 0; i <= pts; i += 3) {
+        const y = (H / pts) * i;
+        const x1 = offsetX + Math.sin(i * freq + t + phase) * amp;
+        const x2 = offsetX + Math.sin(i * freq + t + phase + Math.PI) * amp;
+        ctx.beginPath();
+        ctx.moveTo(x1, y);
+        ctx.lineTo(x2, y);
+        ctx.strokeStyle = 'rgba(212,168,67,0.35)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // dots at ends
+        [[x1, y], [x2, y]].forEach(([cx, cy]) => {
+          ctx.beginPath();
+          ctx.arc(cx, cy, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(63,185,80,0.7)';
+          ctx.fill();
+        });
+      }
+    }
+
+    t += speed;
+    raf = requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+// ── Publication filter ──────────────────────────────────────────────────
+function filterPubs(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-item').forEach(item => {
+    item.classList.toggle('show', type === 'all' || item.dataset.type === type);
+  });
+}
+
+// ── Scroll reveal ──────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
