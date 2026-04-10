@@ -47,7 +47,7 @@ Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
 <div align="center">
 
-[![GenoBridge](https://github-readme-stats.vercel.app/api/pin/?username=nps-genomics&repo=GenoBridge&theme=github_dark&border_color=3fb950&title_color=3fb950&icon_color=d4a843)](https://github.com/nps-genomics/GenoBridge)
+[![GenoBridge](https://img.shields.io/badge/GenoBridge-VCF%20%E2%86%92%20Prediction-3fb950?style=for-the-badge&logoColor=white)](https://github.com/nps-genomics/GenoBridge)
 
 </div>
 
