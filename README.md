@@ -94,6 +94,8 @@ Investigating **microRNA-mediated cross-kingdom gene silencing** between wheat a
 Contributed to genome sequencing, DNA methylation landscape analysis, and **transcriptome-wide association mapping** in chickpea (*Cicer arietinum*) and ricebean (*Vigna umbellata*) — 6 publications, 130+ citations.
 
 </td>
+</tr>
+<tr>
 <td width="50%">
 
 
