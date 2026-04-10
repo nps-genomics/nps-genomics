@@ -94,15 +94,15 @@ Investigating **microRNA-mediated cross-kingdom gene silencing** between wheat a
 Contributed to genome sequencing, DNA methylation landscape analysis, and **transcriptome-wide association mapping** in chickpea (*Cicer arietinum*) and ricebean (*Vigna umbellata*) — 6 publications, 130+ citations.
 
 </td>
-</tr>
-</table> width="50%">
+<td width="50%">
+
 
 ###  🍄 Fungal Genomics & Pathogenicity
 Evolution of pathogenicity-associated genes in **Rhizoctonia solani AG1-IA** by genome duplication and transposon-mediated gene function alterations (*Rice*)  — 1 publication, 22+ citations.
 
 </td>
 </tr>
-</table>
+</table> width="50%">
 
 ---
 
