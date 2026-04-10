@@ -10,7 +10,7 @@
 
 ---
 
-## 🧬 About Me
+🧬 About Me
 
 ```python
 researcher = {
@@ -29,6 +29,8 @@ researcher = {
     "email"      : "nagendra.singh@agnet.tamu.edu",
 }
 ```
+
+[https://github.com/nps-genomics/nps-genomics.github.io/blob/main/README.md](https://github.com/nps-genomics/nps-genomics.github.io/blob/main/README.md)
 
 ---
 
