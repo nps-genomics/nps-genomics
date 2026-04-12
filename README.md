@@ -157,7 +157,7 @@ Evolution of pathogenicity-associated genes in **Rhizoctonia solani AG1-IA** by 
 ## 🏆 Awards & Funding
 
 - 🥇 **CSIR-NET Lectureship** — All-India Rank 62 (June 2018)
-- 🌿 **Horticultural Sciences Graduate Scholarship**, TAMU — $6,000 (2025–2026)
+- 🌿 **Horticultural Sciences Graduate Scholarship**, TAMU — (2025–until now)
 - 🍊 **Barbara & Jimmie E. Steidinger Citrus Scholarship** — $2,500 (2024–2025)
 - 🔬 **Citrus Center Core Research Grant**, TAMU-Kingsville (2024–2025)
 - 🏫 **Graduate Research Fellowships** — TAMU (2025–), TAMU-K (2024–2025), MSU (2022–2024)
