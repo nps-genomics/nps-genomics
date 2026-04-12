@@ -4,7 +4,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Nagendra%20Pratap%20Singh&fontSize=40&fontColor=fff&animation=fadeIn&fontAlignY=38&desc=Plant%20Genomics%20%7C%20Bioinformatics%20%7C%20Machine%20Learning&descAlignY=58&descSize=16" width="100%"/>
 
 <!-- Typing animation -->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1000&color=3FB950&center=true&vCenter=true&width=700&lines=Ph.D.+Student+%E2%80%94+Texas+A%26M+University%2C+College+Station;Plant+Genetics+%26+Bioinformatics+%F0%9F%8C%BF;Genomic+Prediction+%7C+Pangenomics+%7C+Organellar+Genomics;Developer+of+GenoBridge+ML+Pipeline+%F0%9F%A7%AC)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1000&color=3FB950&center=true&vCenter=true&width=700&lines=Ph.D.+From+%E2%80%94+Texas+A%26M+University%2C+College+Station;Plant+Genetics+%26+Bioinformatics+%F0%9F%8C%BF;Genomic+Prediction+%7C+Pangenomics+%7C+Organellar+Genomics;Developer+of+GenoBridge+ML+Pipeline+%F0%9F%A7%AC)](https://git.io/typing-svg)
 
 </div>
 
