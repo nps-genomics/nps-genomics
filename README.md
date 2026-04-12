@@ -18,7 +18,7 @@ Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
 - **Affiliations:** TAMU, TAMU–Kingsville, USDA-ARS, CIMMYT Academy  
 - **Research focus:**  
-  - Citrus genomics (chloroplast & mitochondria)  
+  - Citrus genomics &  Genomics of the origin and evolution of Grapefruit
   - Adaptive ML for genomic prediction (GenoBridge)  
   - Wheat pangenomics & structural variation  
   - Cross-kingdom sRNA regulation
