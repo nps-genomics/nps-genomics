@@ -12,7 +12,7 @@
 🧬 About Me  
 
 **Nagendra Pratap Singh**  
-Ph.D. Student — Plant Genetics & Bioinformatics  
+Plant Genetics & Bioinformatics  
 Texas A&M University, College Station, TX  
 Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
