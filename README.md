@@ -11,6 +11,8 @@
 ---
 🧬 About Me  
 
+https://nps-genomics.github.io/nps-genomics/
+
 **Nagendra Pratap Singh**  
 Plant Genetics & Bioinformatics  
 Texas A&M University, College Station, TX  
