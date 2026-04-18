@@ -37,7 +37,7 @@ Advisor: **Dr. Venugopal Mendu/Dr. Amit Dhingra**
 
 | 📖 Citations | 🏆 h-index | 📌 i10-index | 📄 Publications |
 |:---:|:---:|:---:|:---:|
-| **176** | **6** | **4** | **10+ published · 8 in review/prep** |
+| **180** | **6** | **4** | **10+ published · 8 in review/prep** |
 
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=anLGTFwAAAAJ)
 
