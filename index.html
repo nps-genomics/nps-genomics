@@ -77,6 +77,32 @@ nav {
 }
 .nav-links a:hover { color: var(--text); }
 
+/* ── SCHOLAR SYNC PILL ────────────────────────────── */
+.gs-sync {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 0.9rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg2);
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+.gs-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(63,185,80,0.6);
+  animation: gs-pulse 2.4s infinite;
+}
+.gs-sync.stale .gs-dot { background: var(--muted); animation: none; }
+@keyframes gs-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(63,185,80,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(63,185,80,0); }
+  100% { box-shadow: 0 0 0 0 rgba(63,185,80,0); }
+}
+.stat-num.gs-updating { opacity: 0.45; transition: opacity 0.2s; }
+
 /* ── HERO ───────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
@@ -806,21 +832,26 @@ footer {
 
     <div class="hero-stats">
       <div class="stat">
-        <span class="stat-num">180</span>
+        <span class="stat-num" id="gs-citations" data-count="207">207</span>
         <span class="stat-label">Citations</span>
       </div>
       <div class="stat">
-        <span class="stat-num">6</span>
+        <span class="stat-num" id="gs-hindex" data-count="7">7</span>
         <span class="stat-label">h-index</span>
       </div>
       <div class="stat">
-        <span class="stat-num">10+</span>
-        <span class="stat-label">Publications</span>
+        <span class="stat-num" id="gs-i10" data-count="7">7</span>
+        <span class="stat-label">i10-index</span>
       </div>
       <div class="stat">
         <span class="stat-num">8+</span>
         <span class="stat-label">In Review / Prep</span>
       </div>
+    </div>
+
+    <div class="gs-sync" id="gs-sync">
+      <span class="gs-dot"></span>
+      <span>Live from Google Scholar &middot; synced <span id="gs-updated">daily</span></span>
     </div>
 
     <div class="hero-actions">
@@ -1039,7 +1070,7 @@ footer {
       </div>
       <div class="pub-title">Root-specific expression of chickpea cytokinin oxidase/dehydrogenase 6 leads to enhanced root growth, drought tolerance, and yield without compromising nodulation</div>
       <div class="pub-authors">Khandal H, Gupta SK, Dwivedi V, …, <strong>Singh NP</strong>, …, Chattopadhyay D.</div>
-      <div class="pub-cite">🔢 90 citations</div>
+      <div class="pub-cite" data-gs="cytokinin oxidase">🔢 <span class="gs-n">96</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1050,7 +1081,7 @@ footer {
       </div>
       <div class="pub-title">Mutation in the endo-β-1,4-glucanase (KORRIGAN) is responsible for the thick leaf phenotype in sorghum</div>
       <div class="pub-authors">Mendu L, Jalathge G, Dhillon KK, <strong>Singh NP</strong>, …, Mendu V.</div>
-      <div class="pub-cite">🔢 5 citations</div>
+      <div class="pub-cite" data-gs="korrigan">🔢 <span class="gs-n">5</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1061,7 +1092,7 @@ footer {
       </div>
       <div class="pub-title">A 'solid' solution for wheat stem sawfly (Hymenoptera: Cephidae) resistance: Genetics, breeding, and development of solid stem wheat</div>
       <div class="pub-authors">Bathini A, Mendu L, <strong>Singh NP</strong>, Cook J, Weaver D, Sherman J, Hager M, Mondal S, Mendu V.</div>
-      <div class="pub-cite">🔢 8 citations</div>
+      <div class="pub-cite" data-gs="wheat stem sawfly (hymenoptera">🔢 <span class="gs-n">11</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1072,7 +1103,7 @@ footer {
       </div>
       <div class="pub-title">Evolution of pathogenicity-associated genes in Rhizoctonia solani AG1-IA by genome duplication and transposon-mediated gene function alterations</div>
       <div class="pub-authors">Francis A, Ghosh S, Tyagi K, Prakasam V, Rani M, <strong>Singh NP</strong>, …, Jha G.</div>
-      <div class="pub-cite">🔢 22 citations</div>
+      <div class="pub-cite" data-gs="evolution of pathogenicity-associated">🔢 <span class="gs-n">28</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1083,7 +1114,7 @@ footer {
       </div>
       <div class="pub-title">The ricebean genome provides insight into Vigna genome evolution and facilitates genetic enhancement</div>
       <div class="pub-authors">Francis A, <strong>Singh NP</strong>, Singh M, Sharma P, …, Chattopadhyay D.</div>
-      <div class="pub-cite">🔢 12 citations</div>
+      <div class="pub-cite" data-gs="ricebean genome provides insight">🔢 <span class="gs-n">18</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1094,7 +1125,7 @@ footer {
       </div>
       <div class="pub-title">Differential expression of genes during recovery of Nicotiana tabacum from tomato leaf curl Gujarat virus infection</div>
       <div class="pub-authors">Namgial T, Singh AK, <strong>Singh NP</strong>, Francis A, Chattopadhyay D, Voloudakis A, Chakraborty S.</div>
-      <div class="pub-cite">🔢 6 citations</div>
+      <div class="pub-cite" data-gs="differential expression of genes during recovery">🔢 <span class="gs-n">6</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1105,7 +1136,7 @@ footer {
       </div>
       <div class="pub-title">Uncovering DNA methylation landscapes to decipher evolutionary footprints of phenotypic diversity in chickpea</div>
       <div class="pub-authors">Daware A, Mohanty JK, Narnoliya L, …, <strong>Singh NP</strong>, …, Parida SK.</div>
-      <div class="pub-cite">🔢 4 citations</div>
+      <div class="pub-cite" data-gs="dna methylation landscapes">🔢 <span class="gs-n">7</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1116,7 +1147,7 @@ footer {
       </div>
       <div class="pub-title">The chickpea WIP2 gene underlying a major QTL contributes to lateral root development</div>
       <div class="pub-authors">Dwivedi V, Pal L, Singh S, <strong>Singh NP</strong>, Parida SK, Chattopadhyay D.</div>
-      <div class="pub-cite">🔢 9 citations</div>
+      <div class="pub-cite" data-gs="wip2 gene">🔢 <span class="gs-n">11</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1127,7 +1158,7 @@ footer {
       </div>
       <div class="pub-title">Transcriptome-wide association mapping provides insights into the genetic basis and candidate genes governing flowering, maturity, and seed weight in rice bean (Vigna umbellata)</div>
       <div class="pub-authors">Sahu TK, Verma SK, Gayacharan, <strong>Singh NP</strong>, …, Singh AK.</div>
-      <div class="pub-cite">🔢 5 citations</div>
+      <div class="pub-cite" data-gs="transcriptome-wide association mapping">🔢 <span class="gs-n">10</span> citations</div>
     </div>
 
     <div class="pub-item show" data-type="published">
@@ -1448,7 +1479,7 @@ footer {
         <span class="contact-link-icon">📊</span>
         <div>
           <span class="contact-link-label">Google Scholar</span>
-          <span class="contact-link-val">180 citations · h-index 6</span>
+          <span class="contact-link-val" id="gs-contact-val">207 citations &middot; h-index 7</span>
         </div>
       </a>
       <a href="mailto:22singhnagendra@gmail.com" class="contact-link">
@@ -1566,6 +1597,97 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+
+<!-- ── GOOGLE SCHOLAR LIVE SYNC ────────────────────────────────────
+     data/scholar.json is regenerated daily by .github/workflows/update-scholar.yml.
+     Every number below also exists as static HTML, so if the fetch fails the page
+     silently keeps the last values that were committed. Nothing ever renders empty.
+─────────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  var SRC = 'data/scholar.json';
+
+  function norm(s) {
+    return (s || '').toLowerCase()
+      .replace(/[\u2018\u2019\u201c\u201d]/g, "'")
+      .replace(/[\u2010-\u2015]/g, '-')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function countUp(el, to) {
+    var from = parseInt(el.textContent.replace(/\D/g, ''), 10) || 0;
+    if (from === to) { el.textContent = to; return; }
+    var start = null, dur = 900;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(from + (to - from) * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function setStat(id, val) {
+    var el = document.getElementById(id);
+    if (el && typeof val === 'number') countUp(el, val);
+  }
+
+  function apply(d) {
+    setStat('gs-citations', d.citations);
+    setStat('gs-hindex', d.h_index);
+    setStat('gs-i10', d.i10_index);
+
+    var c = document.getElementById('gs-contact-val');
+    if (c && d.citations) {
+      c.innerHTML = d.citations + ' citations \u00b7 h-index ' + d.h_index;
+    }
+
+    var u = document.getElementById('gs-updated');
+    if (u && d.updated) {
+      var dt = new Date(d.updated);
+      u.textContent = dt.toLocaleDateString('en-US',
+        { year: 'numeric', month: 'short', day: 'numeric' });
+      var days = (Date.now() - dt.getTime()) / 86400000;
+      if (days > 10) document.getElementById('gs-sync').classList.add('stale');
+    }
+
+    // Per-publication counts. Each card carries data-gs="<distinctive title fragment>".
+    // Scholar profiles often hold near-duplicate records (a preprint and the journal
+    // version, or a "Correction to:" entry), so when several records match a fragment
+    // we take the one with the most citations rather than the first hit.
+    var list = (d.publications || []).map(function (p) {
+      return { t: norm(p.title), c: p.citations || 0 };
+    });
+    document.querySelectorAll('.pub-cite[data-gs]').forEach(function (el) {
+      var key = norm(el.getAttribute('data-gs'));
+      var best = null;
+      list.forEach(function (p) {
+        if (p.t.indexOf(key) !== -1 && (!best || p.c > best.c)) best = p;
+      });
+      if (!best) return;
+      var span = el.querySelector('.gs-n');
+      if (span) span.textContent = best.c;
+      else el.innerHTML = '\uD83D\uDD22 <span class="gs-n">' + best.c + '</span> citations';
+    });
+  }
+
+  fetch(SRC + '?v=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(apply)
+    .catch(function () {
+      // Scholar scraping is best-effort. Keep the committed numbers, mark them stale.
+      var s = document.getElementById('gs-sync');
+      if (s) {
+        s.classList.add('stale');
+        var u = document.getElementById('gs-updated');
+        if (u) u.textContent = 'last commit';
+      }
+    });
+})();
 </script>
 
 </body>
