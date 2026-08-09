@@ -37,7 +37,7 @@ Advisors: **Dr. Amit Dhingra** (TAMU) · **Dr. Venugopal Mendu** (TAMU–Kingsvi
 
 | 📖 Citations | 🏆 h-index | 📌 i10-index | 📄 Output |
 |:---:|:---:|:---:|:---:|
-| **207** | **7** | **7** | **14 published · 8 in review/prep** |
+| **208** | **7** | **7** | **14 published · 8 in review/prep** |
 
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=anLGTFwAAAAJ)
 
